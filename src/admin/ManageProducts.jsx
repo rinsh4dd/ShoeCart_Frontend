@@ -173,7 +173,7 @@ function ManageProducts() {
       specialOffer: product.specialOffer || "",
       availableSizes: product.availableSizes || [],
       currentStock: product.currentStock || "",
-      existingImages: product.imageBase64 || [],
+      existingImages: product.imageUrls || [],
       newImages: [],
       mainImageIndex: 0,
       inStock: product.inStock !== undefined ? product.inStock : true,
@@ -501,7 +501,7 @@ function ManageProducts() {
           <h3 className="text-red-800 font-bold mb-4">{error}</h3>
           <button
             onClick={() => window.location.reload()}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
           >
             Retry
           </button>
@@ -511,7 +511,7 @@ function ManageProducts() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-4 md:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-red-50 to-red-50 p-4 md:p-6">
       {/* Toast Notification */}
       {showToast && (
         <div className="fixed top-6 right-6 z-[100] animate-slide-in">
@@ -527,7 +527,7 @@ function ManageProducts() {
       <div className="max-w-7xl mx-auto">
         {/* Header with Glass Effect */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 via-red-900 to-red-900 bg-clip-text text-transparent">
             Manage Products
           </h1>
           <button
@@ -546,7 +546,7 @@ function ManageProducts() {
             <input
               type="text"
               placeholder="Search by name, brand, or category"
-              className="w-full pl-12 pr-4 py-3 bg-white/60 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+              className="w-full pl-12 pr-4 py-3 bg-white/60 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -598,7 +598,7 @@ function ManageProducts() {
                             <img
                               className="h-full w-full object-cover"
                               src={
-                                product.imageBase64[0] ||
+                                product.imageUrls?.[0] ||
                                 "https://via.placeholder.com/150"
                               }
                               alt={product.name}
@@ -669,7 +669,7 @@ function ManageProducts() {
                       <td className="px-6 py-4 text-right">
                         <button
                           onClick={() => handleEditClick(product)}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/80 hover:bg-blue-600/80 text-white font-medium rounded-xl transition-all duration-300 backdrop-blur-sm"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/80 hover:bg-red-600/80 text-white font-medium rounded-xl transition-all duration-300 backdrop-blur-sm"
                         >
                           <FaEdit />
                           Edit
@@ -712,7 +712,7 @@ function ManageProducts() {
                   onClick={() => paginate(i + 1)}
                   className={`w-10 h-10 rounded-xl flex items-center justify-center font-semibold transition-all backdrop-blur-sm ${
                     currentPage === i + 1
-                      ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg"
+                      ? "bg-gradient-to-r from-red-500 to-red-500 text-white shadow-lg"
                       : "hover:bg-white/60 text-gray-700"
                   }`}
                 >
@@ -737,7 +737,7 @@ function ManageProducts() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md">
           <div className="w-full max-w-3xl max-h-[90vh] bg-white/70 backdrop-blur-2xl rounded-3xl shadow-2xl overflow-hidden border border-white/30">
             <div className="sticky top-0 bg-white/50 backdrop-blur-2xl border-b border-white/30 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-red-900 bg-clip-text text-transparent">
                 Add New Product
               </h2>
               <button
@@ -766,7 +766,7 @@ function ManageProducts() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="Enter product name"
                     />
                     {formErrors.name && (
@@ -785,7 +785,7 @@ function ManageProducts() {
                       name="brand"
                       value={formData.brand}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="Enter brand name"
                     />
                     {formErrors.brand && (
@@ -805,7 +805,7 @@ function ManageProducts() {
                     value={formData.description}
                     onChange={handleInputChange}
                     rows="3"
-                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all resize-none"
                     placeholder="Enter product description"
                   />
                   {formErrors.description && (
@@ -826,7 +826,7 @@ function ManageProducts() {
                       name="price"
                       value={formData.price}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="0.00"
                     />
                     {formErrors.price && (
@@ -844,7 +844,7 @@ function ManageProducts() {
                       name="categoryId"
                       value={formData.categoryId}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                     >
                       <option value="">Select category</option>
                       {category.map((cat) => (
@@ -869,7 +869,7 @@ function ManageProducts() {
                       name="currentStock"
                       value={formData.currentStock}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="0"
                     />
                     {formErrors.currentStock && (
@@ -889,7 +889,7 @@ function ManageProducts() {
                     name="specialOffer"
                     value={formData.specialOffer}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                     placeholder="e.g., 20% OFF"
                   />
                 </div>
@@ -906,7 +906,7 @@ function ManageProducts() {
                         onClick={() => handleSizeToggle(size)}
                         className={`px-4 py-2 rounded-xl font-semibold transition-all backdrop-blur-sm ${
                           formData.availableSizes.includes(size)
-                            ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg"
+                            ? "bg-gradient-to-r from-red-500 to-red-500 text-white shadow-lg"
                             : "bg-white/50 text-gray-700 border border-white/40 hover:bg-white/70"
                         }`}
                       >
@@ -970,7 +970,7 @@ function ManageProducts() {
                             <FaTimes className="text-xs" />
                           </button>
                           {formData.mainImageIndex === index && (
-                            <div className="absolute top-3 left-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-2 py-1 rounded-full text-xs flex items-center gap-1 shadow-lg">
+                            <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-red-500 text-white px-2 py-1 rounded-full text-xs flex items-center gap-1 shadow-lg">
                               <FaCheck className="text-xs" />
                               Main
                             </div>
@@ -1010,7 +1010,7 @@ function ManageProducts() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="px-6 py-2.5 bg-gradient-to-r from-red-500 to-red-500 text-white font-semibold rounded-xl hover:from-red-600 hover:to-red-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   {submitting ? (
                     <>
@@ -1035,7 +1035,7 @@ function ManageProducts() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md">
           <div className="w-full max-w-3xl max-h-[90vh] bg-white/70 backdrop-blur-2xl rounded-3xl shadow-2xl overflow-hidden border border-white/30">
             <div className="sticky top-0 bg-white/50 backdrop-blur-2xl border-b border-white/30 px-6 py-4 flex justify-between items-center">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-blue-900 bg-clip-text text-transparent">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-red-900 bg-clip-text text-transparent">
                 Edit Product
               </h2>
               <button
@@ -1064,7 +1064,7 @@ function ManageProducts() {
                       name="name"
                       value={editFormData.name}
                       onChange={handleEditInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="Enter product name"
                     />
                     {editFormErrors.name && (
@@ -1083,7 +1083,7 @@ function ManageProducts() {
                       name="brand"
                       value={editFormData.brand}
                       onChange={handleEditInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="Enter brand name"
                     />
                     {editFormErrors.brand && (
@@ -1103,7 +1103,7 @@ function ManageProducts() {
                     value={editFormData.description}
                     onChange={handleEditInputChange}
                     rows="3"
-                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all resize-none"
                     placeholder="Enter product description"
                   />
                   {editFormErrors.description && (
@@ -1124,7 +1124,7 @@ function ManageProducts() {
                       name="price"
                       value={editFormData.price}
                       onChange={handleEditInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="0.00"
                     />
                     {editFormErrors.price && (
@@ -1142,7 +1142,7 @@ function ManageProducts() {
                       name="categoryId"
                       value={editFormData.categoryId}
                       onChange={handleEditInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                     >
                       <option value="">Select category</option>
                       {category.map((cat) => (
@@ -1167,7 +1167,7 @@ function ManageProducts() {
                       name="currentStock"
                       value={editFormData.currentStock}
                       onChange={handleEditInputChange}
-                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                       placeholder="0"
                     />
                     {editFormErrors.currentStock && (
@@ -1187,7 +1187,7 @@ function ManageProducts() {
                     name="specialOffer"
                     value={editFormData.specialOffer}
                     onChange={handleEditInputChange}
-                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/40 rounded-xl focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all"
                     placeholder="e.g., 20% OFF"
                   />
                 </div>
@@ -1199,7 +1199,7 @@ function ManageProducts() {
                     name="inStock"
                     checked={editFormData.inStock}
                     onChange={handleEditInputChange}
-                    className="w-5 h-5 text-blue-500 rounded focus:ring-2 focus:ring-blue-400"
+                    className="w-5 h-5 text-red-500 rounded focus:ring-2 focus:ring-red-400"
                   />
                   <label
                     htmlFor="inStock"
@@ -1221,7 +1221,7 @@ function ManageProducts() {
                         onClick={() => handleEditSizeToggle(size)}
                         className={`px-4 py-2 rounded-xl font-semibold transition-all backdrop-blur-sm ${
                           editFormData.availableSizes.includes(size)
-                            ? "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg"
+                            ? "bg-gradient-to-r from-red-500 to-red-500 text-white shadow-lg"
                             : "bg-white/50 text-gray-700 border border-white/40 hover:bg-white/70"
                         }`}
                       >
@@ -1340,7 +1340,7 @@ function ManageProducts() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="px-6 py-2.5 bg-gradient-to-r from-red-500 to-red-500 text-white font-semibold rounded-xl hover:from-red-600 hover:to-red-600 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   {submitting ? (
                     <>

@@ -82,7 +82,7 @@ function Landing() {
               <Card
                 key={e?.id}
                 id={e?.id}
-                image={e?.imageBase64[0]}
+                image={e?.imageUrls?.[0]}
                 name={e?.name}
                 special_offer={e?.specialOffer}
                 price={e?.price}
@@ -117,7 +117,7 @@ function Landing() {
               <ProductListCard
                 key={p.id}
                 id={p.id}
-                image={p.imageBase64[0]}
+                image={p.imageUrls?.[0] || "/images/fallback-product.png"}
                 name={p.name}
                 special_offer={p.specialOffer}
                 price={p.price}

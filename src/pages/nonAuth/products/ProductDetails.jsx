@@ -102,7 +102,7 @@ function ProductDetails() {
         id: product.id,
         name: product.name,
         price: product.price,
-        image_url: product.image_url,
+        image_url: product.imageUrl,
         brand: product.brand,
       };
       const alreadyInWishlist = userData.wishlist?.some(
@@ -161,39 +161,48 @@ function ProductDetails() {
             {/* Main Product Image */}
             <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-lg">
               <img
-                src={product.imageBase64[selectedImageIndex]}
+                src={
+                  product.imageUrls?.[selectedImageIndex] ||
+                  "/images/fallback-product.png"
+                }
                 alt={product.name}
                 className="w-full h-64 sm:h-[400px] object-cover transition-transform duration-350 group-hover:scale-105"
               />
             </div>
 
             {/* Image Thumbnails Gallery */}
-            {product.imageBase64 && product.imageBase64.length > 1 && (
+            {product.imageUrls && product.imageUrls.length > 1 && (
               <div className="mt-4">
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
-                  More Images:
-                </label>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
-                  {product.imageBase64.map((image, index) => (
-                    <button
-                      key={index}
-                      onMouseEnter={() => handleImageClick(index)}
-                      className={`relative overflow-hidden rounded-md border-2 transition-all duration-200 ${
-                        selectedImageIndex === index
-                          ? "border-transparent hover:border-gray-400"
-                          : "border-transparent opacity-50 hover:border-gray-400"
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt={`${product.name} view ${index + 1}`}
-                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover"
-                      />
-                      {selectedImageIndex === index && (
-                        <div className="absolute inset-0  opacity-20"></div>
-                      )}
-                    </button>
-                  ))}
+                  {product.imageUrls && product.imageUrls.length > 1 && (
+                    <div className="mt-4">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
+                        More Images:
+                      </label>
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                        {product.imageUrls.map((image, index) => (
+                          <button
+                            key={index}
+                            onMouseEnter={() => handleImageClick(index)}
+                            className={`relative overflow-hidden rounded-md border-2 transition-all duration-200 ${
+                              selectedImageIndex === index
+                                ? "border-transparent hover:border-gray-400"
+                                : "border-transparent opacity-50 hover:border-gray-400"
+                            }`}
+                          >
+                            <img
+                              src={image}
+                              alt={`${product.name} view ${index + 1}`}
+                              className="w-16 h-16 sm:w-20 sm:h-20 object-cover"
+                            />
+                            {selectedImageIndex === index && (
+                              <div className="absolute inset-0 opacity-20"></div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

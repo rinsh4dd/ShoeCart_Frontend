@@ -319,10 +319,10 @@ function PaymentPage() {
                   className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                 >
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
-                      {item.image ? (
+                    <div className="w-22 h-12  rounded-lg flex items-center justify-center overflow-hidden">
+                      {item.imageUrl ? (
                         <img
-                          src={item.image}
+                          src={item.imageUrl}
                           alt={item.name}
                           className="w-full h-full object-cover"
                         />

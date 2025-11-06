@@ -145,7 +145,7 @@ function Products() {
               <ProductListCard
                 key={p.id}
                 id={p.id}
-                image={p.imageBase64?.[0]}
+                image={p.imageUrls?.[0] || "/images/fallback-product.png"} // safe access
                 name={p.name}
                 special_offer={p.specialOffer}
                 price={p.price}

@@ -117,7 +117,7 @@ function UserOrders() {
           },
           {
             title: "Total Spent",
-            value: `₹${orderStats.totalAmount}`,
+            value: `$${orderStats.totalAmount}`,
             icon: <FaRupeeSign />,
           },
           {
@@ -223,7 +223,7 @@ function UserOrders() {
                     Total Amount
                   </p>
                   <p className="font-medium flex items-center">
-                    <FaRupeeSign className="mr-1" /> {order.totalAmount}
+                    $ {order.totalAmount}
                   </p>
                 </div>
                 <div>
@@ -242,23 +242,21 @@ function UserOrders() {
                   {order.items?.map((item, idx) => (
                     <div key={idx} className="flex items-start">
                       <div className="w-16 h-16 rounded-md bg-gray-100 overflow-hidden mr-3">
-                        {item.imageData && (
-                          <img
-                            src={`data:${item.imageMimeType};base64,${item.imageData}`}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                          />
-                        )}
+                        <img
+                          src={item.imageUrl || "/images/fallback-product.png"}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
 
                       <div>
                         <p className="font-medium text-gray-800">{item.name}</p>
                         <p className="text-sm text-gray-500">
-                          Size: {item.size} • Qty: {item.quantity} • ₹
-                          {item.price} each
+                          Size: {item.size} • Qty: {item.quantity} • $
+                          {item.price}
                         </p>
                         <p className="text-sm font-medium mt-1">
-                          ₹{item.price * item.quantity}
+                          ${item.price * item.quantity}
                         </p>
                       </div>
                     </div>

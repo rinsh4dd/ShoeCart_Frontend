@@ -149,7 +149,7 @@ function Cart() {
                   <div key={item.id} className="p-5 sm:p-6 flex flex-col sm:flex-row gap-5">
                     <div className="flex-shrink-0">
                       <img 
-                        src={item.image} 
+                        src={item.imageUrl} 
                         alt={item.name} 
                         className="w-24 h-24 rounded-md object-cover border border-gray-200"
                       />
