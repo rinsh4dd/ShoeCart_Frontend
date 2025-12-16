@@ -17,6 +17,7 @@ import AuthProvider from "./common/context/AuthProvider";
 import AdminPrivateRoute from "./common/Routes/AdminRoute";
 import PrivateRoute from "./common/Routes/privateRoute";
 import ShoeCartLoader from "./common/ui/Loader";
+import { CartProvider } from "./common/context/CartContext";
 import { WishlistProvider } from "./common/context/WishlistContext";
 
 // Lazy-loaded Pages
@@ -110,7 +111,9 @@ function UserRouter() {
     <Router>
       <AuthProvider>
         <WishlistProvider>
-          <AppRoutesWrapper />
+          <CartProvider>
+            <AppRoutesWrapper />
+          </CartProvider>
         </WishlistProvider>
       </AuthProvider>
     </Router>

@@ -85,7 +85,7 @@ const ProductListCard = React.memo(
         onClick={handleClick}
         className="h-auto flex flex-col justify-between relative 
              border border-gray-200 rounded-lg shadow-sm 
-             w-[380px] sm:w-[230px] p-3 duration-300 mt-2.5
+             w-[380px] sm:w-[230px] p-3 duration-300 mt-
              transform hover:-translate-y-1 group 
              bg-white cursor-pointer"
       >
