@@ -65,7 +65,8 @@ function Products() {
 
       {/* 🏷️ Categories & Filter Menu */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-2 w-full overflow-x-auto scrollbar-hide pb-1">
+
           {categories.map((cat) => (
             <button
               key={cat.id}
