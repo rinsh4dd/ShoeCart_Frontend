@@ -6,17 +6,13 @@ function Card({ id, image, name, special_offer, price }) {
     <div
       data-aos="fade-down"
       data-aos-duration="200"
-      className="
-        h-[320px] 
-        w-full sm:w-[240px]
-        p-4 relative flex flex-col justify-between
-        bg-white rounded-xl shadow-lg border border-gray-100 mt-3.5
-        duration-300 transform hover:scale-[1.02] hover:shadow-xl
-        group transition-all ease-in-out overflow-hidden
-      "
+      className="className=h-[320px]  w-[380px] sm:w-[240px] p-4 relative flex flex-col justify-between
+                 bg-white rounded-xl shadow-lg border border-gray-100 mt-3.5
+                 duration-300 transform hover:scale-[1.02] hover:shadow-xl 
+                 group transition-all ease-in-out overflow-hidden"
     >
       {/* Elegant Special Offer Ribbon */}
-      {!/^none$/i.test(special_offer) && (
+      {!/^none$/i.test(special_offer)&& (
         <div className="absolute top-4 right-4 z-10">
           <div className="bg-red-500 text-white text-xs font-semibold px-1 py-1 rounded shadow-md">
             {special_offer}

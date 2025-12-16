@@ -81,8 +81,6 @@ const ProductListCard = React.memo(
     }, [navigate, id]);
 
     return (
-
-      
       <div
         onClick={handleClick}
         className="h-auto flex flex-col justify-between relative 
