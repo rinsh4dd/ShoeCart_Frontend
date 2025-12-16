@@ -1,1 +1,1 @@
-export const URL  = "https://localhost:7233/api"
+export const URL  = "https://shoecart-webapi-amcfhjfwfhdmgben.centralindia-01.azurewebsites.net/api"

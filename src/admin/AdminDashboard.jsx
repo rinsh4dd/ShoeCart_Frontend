@@ -730,6 +730,7 @@ const ChartBox = ({ title, subtitle, icon, children }) => (
     transition={{ duration: 0.3 }}
     className="bg-white/50 backdrop-blur-2xl p-7 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/60 group"
   >
+    
     <div className="mb-5 flex items-start justify-between">
       <div className="flex-1">
         <div className="flex items-center gap-3 mb-2">
