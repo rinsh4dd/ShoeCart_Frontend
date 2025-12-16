@@ -81,9 +81,15 @@ const ProductListCard = React.memo(
     }, [navigate, id]);
 
     return (
+
+      
       <div
         onClick={handleClick}
-        className="h-auto flex flex-col justify-between relative border border-gray-200 rounded-lg shadow-sm w-[230px] p-3 duration-300 transform hover:-translate-y-1 group bg-white cursor-pointer"
+        className="h-auto flex flex-col justify-between relative 
+             border border-gray-200 rounded-lg shadow-sm 
+             w-[380px] sm:w-[230px] p-3 duration-300 mt-2.5
+             transform hover:-translate-y-1 group 
+             bg-white cursor-pointer"
       >
         {/* Wishlist Button */}
         <button
