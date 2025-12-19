@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductListCard from "../../../common/components/card/ProductListCard";
-import { FilterProducts } from "../../../service/product"; // 👈 backend API call
+import { FilterProducts } from "../../../service/product"; 
 import ShoeCartLoader from "../../../common/ui/Loader";
 
 function Products() {

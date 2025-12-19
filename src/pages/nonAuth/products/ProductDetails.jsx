@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../../common/context/AuthProvider";
 import { useCart } from "../../../common/context/CartContext";
 import { URL } from "../../../service/api";
@@ -72,7 +71,7 @@ function ProductDetails() {
 
   const handleAddToCart = async () => {
     if (!size) {
-      toast.warning("Please select a size before adding to cart");
+      toast("Please select a size before adding to cart");
       return;
     }
 
@@ -86,7 +85,7 @@ function ProductDetails() {
 
   const handleAddToWishlist = async () => {
     if (!user) {
-      toast.warning("Please log in to add items to your wishlist!");
+      toast("Please log in to add items to your wishlist!");
       return;
     }
 
@@ -153,7 +152,6 @@ function ProductDetails() {
 
   return (
     <div className="bg-black   min-h-screen py-4 sm:py-10">
-      <ToastContainer position="top-right" autoClose={3000} />
       <div className="max-w-6xl mx-4 sm:mx-auto bg-white p-4 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-md">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 items-start">
           {/* Product Image Section */}

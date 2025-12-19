@@ -106,7 +106,6 @@ function RegistrationPage() {
     }
 
     try {
-      
       const newUser = {
         ...formData,
         role: "user",
@@ -117,14 +116,16 @@ function RegistrationPage() {
         created_at: new Date().toISOString(),
       };
 
-await axios.post(`${URL}/Auth/register`, newUser);
+      await axios.post(`${URL}/Auth/register`, newUser);
 
-      // Show success and redirect
-      showSuccessNotification();
-      setTimeout(() => navigate("/login"), 3000);
+      toast.success("Registration successful! Redirecting to login...");
+
+      setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
       console.error("Registration error:", err);
-      setErrors({ server: "Registration failed. Please try again." });
+      toast.error(
+        err.response?.data?.message || "Registration failed. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }

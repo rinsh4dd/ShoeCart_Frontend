@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
-import "react-toastify/dist/ReactToastify.css";
 import Silk from "../../common/ui/Silk";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { AuthContext } from "../../common/context/AuthProvider";
@@ -222,17 +221,6 @@ function LoginPage() {
           </p>
         </div>
       </motion.div>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme="colored"
-      />
     </div>
   );
 }
